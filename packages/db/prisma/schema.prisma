@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Chore {
+  id               String   @id @default(cuid())
+  name             String
+  intervalDays     Int
+  lastCompletedAt  DateTime
+  createdAt        DateTime @default(now())
+}
+
+model Todo {
+  id         String   @id @default(cuid())
+  text       String
+  completed  Boolean  @default(false)
+  dueDate    DateTime?
+  createdAt  DateTime @default(now())
+}
+
+model Calendar {
+  id       String @id @default(cuid())
+  name     String
+  icsUrl   String
+  events   Event[]
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  calendarId  String
+  title       String
+  start       DateTime
+  end         DateTime
+
+  calendar    Calendar @relation(fields: [calendarId], references: [id], onDelete: Cascade)
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@homeboard/api",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsup",
+    "start": "node dist/index.js",
+    "preview": "node dist/index.mjs",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.5.0",
+    "@fastify/static": "^7.0.4",
+    "@homeboard/db": "workspace:*",
+    "@homeboard/types": "workspace:*",
+    "@prisma/client": "^5.10.2",
+    "dayjs": "^1.11.10",
+    "fastify": "^4.26.1",
+    "ical.js": "^1.5.0",
+    "node-cron": "^3.0.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.33",
+    "@types/node-cron": "^3.0.11",
+    "@types/ws": "^8.5.10",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,18 @@
+services:
+  homeboard:
+    container_name: homeboard
+    build: .
+    ports:
+      - "3005:3000"
+    volumes:
+      - homeboard_data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DATABASE_URL=file:/app/data/homeboard.db
+      - NODE_ENV=production
+      - CALENDAR_REFRESH_MINUTES=10
+      - EVENT_LOOKAHEAD_DAYS=60
+    restart: unless-stopped
+
+volumes:
+  homeboard_data:
