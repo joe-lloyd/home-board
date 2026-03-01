@@ -9,5 +9,8 @@ echo "Starting HomeBoard..."
 echo "Pushing database schema..."
 pnpm --filter @homeboard/db db:push
 
+echo "Yielding to SQLite..."
+sleep 2
+
 echo "Starting API server..."
 node apps/api/dist/index.mjs

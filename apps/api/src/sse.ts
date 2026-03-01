@@ -19,6 +19,11 @@ export function setupSSE(server: FastifyInstance) {
       clients.delete(reply);
     });
   });
+
+  // Keep-alive ping every 30 seconds to prevent network proxies/routers from dropping the connection
+  setInterval(() => {
+    broadcast({ type: "ping" });
+  }, 30000);
 }
 
 export function broadcast(event: SSEEvent) {

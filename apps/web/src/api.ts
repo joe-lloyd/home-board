@@ -29,6 +29,11 @@ export const api = {
 
   getEvents: () => fetcher<BoardEvent[]>("/events"),
 
+  getWeather: (city: string) =>
+    fetcher<{ tempC: string; condition: string; iconPath: string }>(
+      `/weather/${encodeURIComponent(city)}`,
+    ),
+
   // Admin
   createChore: (data: { name: string; intervalDays: number }) =>
     fetcher<Chore>("/admin/chores", {

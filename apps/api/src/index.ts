@@ -5,6 +5,7 @@ import { setupSSE } from "./sse";
 import { choreRoutes } from "./routes/chores";
 import { todoRoutes } from "./routes/todos";
 import { calendarRoutes } from "./routes/calendar";
+import { weatherRoutes } from "./routes/weather";
 import { setupCron } from "./cron";
 import fastifyStatic from "@fastify/static";
 import path from "path";
@@ -31,6 +32,7 @@ const start = async () => {
     await server.register(choreRoutes, { prefix: "/api" });
     await server.register(todoRoutes, { prefix: "/api" });
     await server.register(calendarRoutes, { prefix: "/api" });
+    await server.register(weatherRoutes, { prefix: "/api" });
 
     // Import dynamically to avoid top-level await issues if any
     const { systemRoutes } = await import("./routes/system");
