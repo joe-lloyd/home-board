@@ -28,7 +28,7 @@ export function Dashboard() {
   return (
     <div className="h-screen w-screen bg-slate-950 text-slate-50 flex flex-col overflow-hidden">
       {/* Main Content Area - Maximized Space */}
-      <main className="flex-1 overflow-hidden relative p-4">
+      <main className="flex-1 overflow-y-auto overflow-x-hidden relative p-4">
         <AnimatePresence mode="wait">
           {activeTab === "overview" && (
             <motion.div
@@ -36,7 +36,7 @@ export function Dashboard() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="h-full"
+              className="h-auto min-h-full md:h-full"
             >
               <Overview onNavigateToCalendar={() => setActiveTab("calendar")} />
             </motion.div>
@@ -48,15 +48,15 @@ export function Dashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="h-full grid grid-cols-1 lg:grid-cols-3 gap-6"
+              className="h-auto min-h-full lg:h-full flex flex-col lg:grid lg:grid-cols-3 gap-6 pb-6 lg:pb-0"
             >
-              <div className="lg:col-span-2 h-full min-h-0">
+              <div className="min-h-[500px] lg:col-span-2 lg:h-full lg:min-h-0">
                 <MonthCalendar
                   selectedDate={selectedCalendarDate}
                   onSelectDate={setSelectedCalendarDate}
                 />
               </div>
-              <div className="h-full min-h-0">
+              <div className="min-h-[400px] lg:h-full lg:min-h-0">
                 <TodayEvents date={selectedCalendarDate} />
               </div>
             </motion.div>
@@ -68,7 +68,7 @@ export function Dashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="h-full max-w-4xl mx-auto"
+              className="h-auto min-h-full md:h-full max-w-4xl mx-auto pb-6 md:pb-0"
             >
               <ChoreList filter="all" />
             </motion.div>
@@ -80,7 +80,7 @@ export function Dashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="h-full max-w-3xl mx-auto"
+              className="h-auto min-h-full md:h-full max-w-3xl mx-auto pb-6 md:pb-0"
             >
               <TodoList />
             </motion.div>
@@ -89,9 +89,9 @@ export function Dashboard() {
       </main>
 
       {/* Bottom Navigation Bar */}
-      <nav className="h-20 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-6 shrink-0 z-10">
+      <nav className="h-20 bg-slate-900 border-t border-slate-800 flex items-center justify-between px-2 md:px-6 shrink-0 z-10 overflow-x-auto nice-scroll">
         {/* Tabs */}
-        <div className="flex items-center gap-2 h-full py-3">
+        <div className="flex items-center gap-1 md:gap-2 h-full py-3">
           <NavButton
             active={activeTab === "overview"}
             onClick={() => setActiveTab("overview")}
@@ -146,7 +146,7 @@ function NavButton({
     <button
       onClick={onClick}
       className={clsx(
-        "h-full px-6 rounded-xl flex flex-col items-center justify-center gap-1 transition-all min-w-[100px]",
+        "h-full px-4 md:px-6 rounded-xl flex flex-col items-center justify-center gap-1 transition-all min-w-[80px] md:min-w-[100px]",
         active
           ? "bg-indigo-600 text-white shadow-lg shadow-indigo-900/50"
           : "text-slate-400 hover:bg-slate-800 hover:text-slate-200",

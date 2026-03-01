@@ -28,9 +28,9 @@ const start = async () => {
     });
 
     setupSSE(server);
-    await server.register(choreRoutes);
-    await server.register(todoRoutes);
-    await server.register(calendarRoutes);
+    await server.register(choreRoutes, { prefix: "/api" });
+    await server.register(todoRoutes, { prefix: "/api" });
+    await server.register(calendarRoutes, { prefix: "/api" });
 
     // Import dynamically to avoid top-level await issues if any
     const { systemRoutes } = await import("./routes/system");
