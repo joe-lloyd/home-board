@@ -8,6 +8,9 @@ RUN npm install -g pnpm
 # Copy source
 COPY . .
 
+# Install docker CLI & git & openssl (for Prisma on Alpine)
+RUN apk add --no-cache docker-cli docker-cli-compose git openssl
+
 # Install dependencies and build
 RUN pnpm install
 RUN pnpm build
@@ -15,9 +18,6 @@ RUN pnpm build
 # Prune dev dependencies (optional, but good for size)
 # RUN pnpm prune --prod 
 # (Skipping prune for now to ensure all workspace links work easily)
-
-# Install docker CLI & git & openssl (for Prisma on Alpine)
-RUN apk add --no-cache docker-cli docker-cli-compose git openssl
 
 EXPOSE 3000
 
