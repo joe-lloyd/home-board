@@ -65,7 +65,7 @@ export function ChoreList({ filter }: { filter?: "upcoming" | "all" }) {
 
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-xl font-bold mb-4 text-slate-200">Chores</h2>
+      <h2 className="text-xl font-bold mb-3 text-slate-200">Chores</h2>
       <div className="space-y-3 overflow-y-auto pr-2">
         <AnimatePresence>
           {chores?.map((chore) => (
@@ -75,7 +75,7 @@ export function ChoreList({ filter }: { filter?: "upcoming" | "all" }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className={clsx(
-                "p-4 rounded-xl border border-slate-800 flex justify-between items-center transition-colors",
+                "p-3 rounded-xl border border-slate-800 flex justify-between items-center transition-colors",
                 {
                   "bg-emerald-950/30 border-emerald-900/50":
                     chore.status === "ok",

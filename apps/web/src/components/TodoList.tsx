@@ -109,7 +109,7 @@ export function TodoList() {
               exit={{ opacity: 0, scale: 0.95 }}
               layout
               className={clsx(
-                "group flex items-center p-4 rounded-xl border transition-colors cursor-pointer select-none",
+                "group flex items-center p-3 rounded-xl border transition-colors cursor-pointer select-none",
                 todo.completed
                   ? "bg-slate-900/50 border-slate-800 text-slate-500"
                   : "bg-slate-800 border-slate-700 text-slate-200 hover:border-slate-600",

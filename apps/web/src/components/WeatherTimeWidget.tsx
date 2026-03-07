@@ -59,21 +59,24 @@ export function WeatherTimeWidget({
     : Icons.Cloud;
 
   return (
-    <div className="h-full w-full bg-slate-900/50 rounded-2xl border border-slate-800/50 p-6 flex flex-col justify-between">
-      {/* Top Header: Location & Date */}
-      <div className="flex flex-col">
-        <h2 className="text-slate-400 font-medium text-lg tracking-wide uppercase">
+    <div className="h-full w-full bg-slate-900/50 rounded-2xl border border-slate-800/50 p-4 flex flex-col justify-between">
+      {/* Top Header & Time: Inline Layout */}
+      <div className="flex flex-col gap-2">
+        <h2 className="text-slate-400 font-medium text-lg tracking-wide uppercase truncate">
           {title}
         </h2>
-        <span className="text-slate-500 text-sm mt-1">{dateStr}</span>
+        <div className="flex items-baseline justify-between overflow-hidden">
+          <span className="text-4xl lg:text-3xl font-light text-slate-100 tabular-nums tracking-tight truncate pb-2">
+            {time}
+          </span>
+          <span className="text-slate-500 text-sm whitespace-nowrap ml-2">
+            {dateStr}
+          </span>
+        </div>
       </div>
 
-      {/* Center: Massive Clock */}
-      <div className="flex-1 flex items-center justify-center py-4">
-        <span className="text-5xl md:text-6xl lg:text-7xl font-light text-slate-100 tabular-nums tracking-tight">
-          {time}
-        </span>
-      </div>
+      {/* Spacer to push weather to bottom */}
+      <div className="flex-1"></div>
 
       {/* Bottom: Weather Condition */}
       <div className="border-t border-slate-800/50 pt-4 mt-auto">
@@ -88,13 +91,13 @@ export function WeatherTimeWidget({
             <span>Weather unavailable</span>
           </div>
         ) : weather ? (
-          <div className="flex items-center gap-4 text-slate-200">
-            <WeatherIcon size={32} className="text-indigo-400" />
-            <div className="flex flex-col">
-              <span className="text-2xl font-semibold leading-none">
+          <div className="flex items-center gap-4 text-slate-200 overflow-hidden">
+            <WeatherIcon size={28} className="text-indigo-400 shrink-0" />
+            <div className="flex flex-col min-w-0">
+              <span className="text-2xl font-semibold leading-none truncate">
                 {weather.tempC}&deg;C
               </span>
-              <span className="text-slate-400 text-sm capitalize">
+              <span className="text-slate-400 text-sm capitalize truncate">
                 {weather.condition}
               </span>
             </div>

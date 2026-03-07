@@ -28,7 +28,7 @@ export function Dashboard() {
   return (
     <div className="h-screen w-screen bg-slate-950 text-slate-50 flex flex-col overflow-hidden">
       {/* Main Content Area - Maximized Space */}
-      <main className="flex-1 overflow-y-auto overflow-x-hidden relative p-4">
+      <main className="flex-1 overflow-y-auto overflow-x-hidden relative p-2 md:p-4">
         <AnimatePresence mode="wait">
           {activeTab === "overview" && (
             <motion.div
@@ -48,7 +48,7 @@ export function Dashboard() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="h-auto min-h-full lg:h-full flex flex-col lg:grid lg:grid-cols-3 gap-6 pb-6 lg:pb-0"
+              className="h-auto min-h-full lg:h-full flex flex-col lg:grid lg:grid-cols-3 gap-4 pb-6 lg:pb-0"
             >
               <div className="min-h-[500px] lg:col-span-2 lg:h-full lg:min-h-0">
                 <MonthCalendar
