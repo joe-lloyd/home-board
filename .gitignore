@@ -33,3 +33,7 @@ pnpm-debug.log*
 # project specific
 .turbo
 /data
+
+# Local SQLite dev database
+*.db
+*.db-journal
